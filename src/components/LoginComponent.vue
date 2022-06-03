@@ -1,27 +1,83 @@
 <template>
-  <div class="body_signup">
-  <div class= "sign-up-form">
-    <h1> Sign Up Now</h1>
-    <form action="@">
-      <input type="email" class ="input-box" placeholder="Your Email">
-      <input type="password" class ="input-box" placeholder="Your Password">
-      <p><span><input type="checkbox"></span> I agree to the Terms and Services</p>
-      <button onclick="location.href = 'home.html';" type="button" class="signUp-btn">Sign Up</button>
-      <hr>
-      <p class="or">OR</p>
-      <button onclick="location.href = 'home.html';" type="button" class="register-btn">Register</button>
-    </form>
+  <div v-if="getToken()">
+    <div class="body_signup">
+    <div class= "sign-up-form">
+      <h1> Sign Up Now</h1>
+      <form>
+        <input type="email" class ="input-box" placeholder="Your Email" v-model="input.email">
+        <input type="password" class ="input-box" placeholder="Your Password" v-model="input.password">
+        <br><br>
+        <button v-on:click="login" type="button" class="signUp-btn">Sign Up</button>
+        <hr><br>
+        <button v-on:click="register" type="button" class="register-btn">Register</button>
+      </form>
+    </div>
+    </div>
   </div>
+  <div v-else>
+    <h2>You are already logged in. Redirecting.</h2>
+    <meta http-equiv="refresh" content="1; url=http://localhost:8080/#/home">
   </div>
 </template>
 
 <script>
 export default {
-  name: "LoginComponent"
+  name: "LoginComponent",
+  data() {
+    return {
+      input: {
+        email: "",
+        password: ""
+      }
+    }
+  },
+  methods: {
+    login() {
+      if(this.input.email !== "" && this.input.password !== "") {
+        fetch("http://puigmal.salle.url.edu/api/v2/users/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            email: this.input.email,
+            password: this.input.password
+          })
+        })
+        .then(response =>{
+          if(response.status === 200) {
+            return response.json()
+          }else{
+            alert("Wrong email or password");
+          }
+        })
+        .then(data => {
+          localStorage.setItem("token", data.accessToken);
+          localStorage.setItem("email", this.input.email);
+          console.log("token = " + localStorage.getItem("token"));
+          this.$router.push("/home");
+        })
+      }
+    },
+    register(){
+      this.$router.push("/register");
+    },
+    goHome(){
+      this.$router.push("/home");
+    },
+    getToken(){
+      let tok = localStorage.getItem("token");
+      if(tok !== null) {
+        console.log("Token isn't null");
+        return false;
+      }else{
+        console.log("Token is null");
+        return true;
+      }
+    }
+
+  }
 }
-
-
-
 </script>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:100" rel="stylesheet">
 
