@@ -57,21 +57,22 @@ export default {
           console.log("token = " + localStorage.getItem("token"));
           this.$router.push("/home");
         })
+        .catch(error => {
+          console.log(error);
+          alert("Error contacting with the main API. Check connection.");
+        });
       }
     },
     register(){
       this.$router.push("/register");
     },
-    goHome(){
-      this.$router.push("/home");
-    },
     getToken(){
       let tok = localStorage.getItem("token");
       if(tok !== null) {
-        console.log("Token isn't null");
+        //console.log("Token isn't null");
         return false;
       }else{
-        console.log("Token is null");
+        //console.log("Token is null");
         return true;
       }
     }

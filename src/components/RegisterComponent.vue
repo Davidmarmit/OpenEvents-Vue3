@@ -54,6 +54,10 @@ export default {
             alert("Error Registering, check fields for errors.\nMaybe the user already exists?");
           }
         })
+        .catch(error => {
+          console.log(error);
+          alert("Error contacting with the main API. Check connection.");
+        });
       }
     }
   }
