@@ -9,8 +9,7 @@
           <router-link to="/home">Home</router-link> |
           <router-link to="/users">Users</router-link> |
           <router-link to="/friends">Friends</router-link> |
-          <router-link to="/profile">Profile</router-link> |
-          <router-link to="/about">About</router-link>
+          <router-link to="/profile">Profile</router-link>
         </nav>
       </div>
     <div class="nav_mobile">
@@ -18,8 +17,7 @@
         <router-link to="/home">Home</router-link> |
         <router-link to="/friends">Friends</router-link> |
         <router-link to="/profile">Profile</router-link> |
-        <router-link to="/users">Users</router-link> |
-        <router-link to="/about">About</router-link>
+        <router-link to="/users">Users</router-link>
       </nav>
     </div>
     </div>

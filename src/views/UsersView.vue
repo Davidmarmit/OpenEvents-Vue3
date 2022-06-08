@@ -51,7 +51,7 @@ export default {
     },
     errorImage(index){
       console.log("Error loading image");
-      document.getElementsByClassName("ep")[index].src = "https://img.freepik.com/free-vector/minimalist-landscape-desert_23-2148269225.jpg?w=1380&t=st=1654606670~exp=1654607270~hmac=57cae80aa529f425b5f8c9faeb547fc30297baff646469e49552289566491357";
+      document.getElementsByClassName("ep")[index].src = "https://www.w3schools.com/howto/img_avatar.png";
     },
     search(){
       this.listed_users = this.users.filter(u => {

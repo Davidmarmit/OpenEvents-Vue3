@@ -36,7 +36,6 @@
     margin-right: 10px;
   }
   .button_div{
-
     position: relative;
     bottom: 0;
   }
@@ -114,7 +113,7 @@ export default {
       .then(data => {
         this.events = data;
         this.listed_events = this.events;
-        console.log(this.events);
+        //console.log(this.events);
       })
       .catch(error => {
         console.log(error);
@@ -134,7 +133,7 @@ export default {
       }
     },
     showEvent(index){
-      console.log("Show event " + index + " " + this.listed_events[index].name);
+      //console.log("Show event " + index + " " + this.listed_events[index].name);
       this.$router.push({
         path: "/eventviewer",
         name: "eventviewer",

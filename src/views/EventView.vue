@@ -112,7 +112,7 @@ export default {
       .then(data => {
         console.log(data);
         for(let i = 0; i < data.length; i++){
-          console.log("Comparing " + data[i].id + " and " + localStorage.getItem("userid"));
+          //console.log("Comparing " + data[i].id + " and " + localStorage.getItem("userid"));
           if(data[i].id == localStorage.getItem("userid")){
             console.log("Joined");
             document.getElementsByClassName("join_event")[0].innerHTML = "Joined";
